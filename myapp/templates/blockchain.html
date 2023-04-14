@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Blockchain Visualization</title>
+    <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='styles_blockchain.css') }}">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Blockchain Visualization</h1>
+      <hr>
+      {% for block in chain %}
+      <div class="block">
+        <div class="block-header">
+          <h2>Block {{block.index}} </h2>
+          <p>Timestamp: {{ block.timestamp }}</p>
+          <p>Previous Hash: {{ block.previous_hash }}</p>
+        </div>
+        <div class="block-body">
+          <ul>
+            <li>Previous hash: {{ block.previous_hash }}</li>
+            <li>Nonce: {{ block.nonce }}</li>
+            <li>Data: {{ block.transactions }}</li>
+            <li>Timestamp: {{ block.timestamp }}</li>
+            <li>Hash: {{ block.hash }}</li>
+          </ul>
+        </div>
+      </div>
+      {% if not loop.last %}
+      <div style="text-align: center;">
+        <svg height="100" width="100" >
+          <line x1="50" y1="10" x2="50" y2="90"
+          style="stroke:black; stroke-width:1;
+          marker-end:url(#arrowhead);" />
+          <polyline points="45 85, 50 90, 55 85"
+          style="fill:none; stroke:black; stroke-width:2" />
+        </svg>
+
+      </div>
+      
+    {% endif %}
+      {% endfor %}
+    </div>
+  </body>
+</html>

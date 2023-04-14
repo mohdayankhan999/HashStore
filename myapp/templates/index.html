@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Decentralized Storage System</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+	<nav>
+		<ul>
+		  <li><a href="{{'about'}}">About</a></li>
+		  <li><a href="{{'blockchain'}}">Blockchain</a></li>
+		  <li><a href="{{'/'}}">Home</a></li>
+		</ul>
+	  </nav>
+
+	<h1>Welcome to the Decentralized Storage System</h1>
+	<p>This system allows you to store and retrieve files in a decentralized network using IPFS and Pyro4.</p>
+	<form action="{{url_for('index')}}" method="POST" enctype="multipart/form-data">
+		<label for="file">Choose a file:</label>
+		<input type="file" id="file" name="file"><br><br>
+		<input type="submit" value="Upload">
+	</form>
+	<br>
+	<form action="/download" method="get">
+		<label for="hash">Enter the hash of the file to download:</label>
+		<input type="text" id="hash" name="hash"><br><br>
+		<input type="submit" value="Download">
+	</form>
+</body>
+</html>
